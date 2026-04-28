@@ -32,5 +32,13 @@ public class CartaoEntity {
     private ClienteEntity cliente;
 
     public CartaoEntity(String numeroCartao, LocalDate dataExpiracao, String cvv, double limiteCredito, ClienteEntity cliente, LocalDate ultimaAlteracaoLimite, Integer dataVencimentoFatura) {
+        this.numero = numeroCartao;
+        this.dataExpiracao = dataExpiracao;
+        this.cvv = cvv;
+        this.limite = limiteCredito;
+        this.availableLimit = limiteCredito;
+        this.cliente = cliente;
+        this.ultimaAlteracaoLimite = ultimaAlteracaoLimite;
+        this.dataVencimentoFatura = dataVencimentoFatura;
     }
 }

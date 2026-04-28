@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 530" width="900" height="530">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 8 3.5, 0 7" fill="#8899aa"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="530" fill="#12121e" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="40" font-family="'Segoe UI',Arial,sans-serif" font-size="17" font-weight="bold"
+        fill="#e2e6f0" text-anchor="middle">Arquitetura - Operadora Cartão (REST API)</text>
+
+  <!-- ====== ARROWS (drawn before boxes so boxes render on top) ====== -->
+
+  <!-- Client → Controller: request -->
+  <line x1="128" y1="232" x2="168" y2="214" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="147" y="211" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#8899aa" text-anchor="middle">request</text>
+
+  <!-- Controller → Client: response -->
+  <line x1="170" y1="254" x2="130" y2="266" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="149" y="277" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#8899aa" text-anchor="middle">response</text>
+
+  <!-- Controller → ClienteService -->
+  <line x1="318" y1="216" x2="363" y2="198" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ClienteService → GeraDadosCartaoService -->
+  <line x1="441" y1="235" x2="441" y2="258" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ClienteService → Repository -->
+  <line x1="518" y1="195" x2="563" y2="195" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Repository → H2 (JPA / Hibernate) -->
+  <line x1="618" y1="228" x2="572" y2="376" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="626" y="292" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#8899aa">JPA /</text>
+  <text x="626" y="304" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#8899aa">Hibernate</text>
+
+  <!-- Repository → Entities (Dependency Injection, dashed bus) -->
+  <line x1="722" y1="195" x2="752" y2="195" stroke="#8899aa" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="752" y1="141" x2="752" y2="312" stroke="#8899aa" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="752" y1="141" x2="766" y2="141" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="752" y1="227" x2="766" y2="227" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="752" y1="312" x2="766" y2="312" stroke="#8899aa" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="737" y="248" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" fill="#8899aa" text-anchor="middle">Dep.</text>
+  <text x="737" y="259" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" fill="#8899aa" text-anchor="middle">Injection</text>
+
+  <!-- ====== COMPONENT BOXES ====== -->
+
+  <!-- CLIENT -->
+  <rect x="25" y="213" width="103" height="65" rx="8" fill="#2563a8" stroke="#1a4888" stroke-width="2"/>
+  <text x="76" y="240" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">Client</text>
+  <text x="76" y="257" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#a8c8f0" text-anchor="middle">HTTP / JSON</text>
+
+  <!-- CONTROLLER -->
+  <rect x="170" y="180" width="148" height="95" rx="8" fill="#2563a8" stroke="#1a4888" stroke-width="2"/>
+  <text x="244" y="200" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">ClienteController</text>
+  <text x="244" y="215" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#a8c8f0" text-anchor="middle">@RestController</text>
+  <line x1="183" y1="222" x2="305" y2="222" stroke="#4080c0" stroke-width="0.7"/>
+  <text x="244" y="235" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#88b8e8" text-anchor="middle">POST /cliente</text>
+  <text x="244" y="247" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#88b8e8" text-anchor="middle">GET /cliente?cpf=</text>
+  <text x="244" y="263" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ffd060" text-anchor="middle">&#8627; ClienteMapper</text>
+
+  <!-- CLIENTE SERVICE -->
+  <rect x="365" y="155" width="153" height="80" rx="8" fill="#b86c10" stroke="#905000" stroke-width="2"/>
+  <text x="441" y="178" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">ClienteService</text>
+  <text x="441" y="193" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#ffe0a0" text-anchor="middle">@Service</text>
+  <line x1="378" y1="200" x2="505" y2="200" stroke="#d88828" stroke-width="0.7"/>
+  <text x="441" y="213" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ffd888" text-anchor="middle">solicitarCartao()</text>
+  <text x="441" y="226" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ffd888" text-anchor="middle">buscarPorCpf()</text>
+
+  <!-- GERA DADOS CARTAO SERVICE -->
+  <rect x="365" y="258" width="153" height="80" rx="8" fill="#b86c10" stroke="#905000" stroke-width="2"/>
+  <text x="441" y="277" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">GeraDadosCartao</text>
+  <text x="441" y="290" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">Service</text>
+  <text x="441" y="305" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#ffe0a0" text-anchor="middle">@Service</text>
+  <line x1="378" y1="312" x2="505" y2="312" stroke="#d88828" stroke-width="0.7"/>
+  <text x="441" y="325" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ffd888" text-anchor="middle">gerarNumero | CVV | Limite</text>
+
+  <!-- REPOSITORY -->
+  <rect x="565" y="163" width="157" height="65" rx="8" fill="#167a48" stroke="#0e5a34" stroke-width="2"/>
+  <text x="643" y="185" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">ClienteJpa</text>
+  <text x="643" y="200" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">Repository</text>
+  <line x1="578" y1="207" x2="709" y2="207" stroke="#30b870" stroke-width="0.7"/>
+  <text x="643" y="220" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" fill="#80e8b0" text-anchor="middle">JpaRepository&lt;ClienteEntity, Long&gt;</text>
+
+  <!-- H2 DATABASE -->
+  <rect x="493" y="378" width="162" height="62" rx="8" fill="#303050" stroke="#202038" stroke-width="2"/>
+  <text x="574" y="403" font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">H2 Database</text>
+  <text x="574" y="419" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#a8a8d0" text-anchor="middle">In Memory</text>
+  <text x="574" y="433" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" fill="#8888b8" text-anchor="middle">jdbc:h2:mem:operadoracartao</text>
+
+  <!-- CLIENTE ENTITY -->
+  <rect x="768" y="111" width="118" height="60" rx="8" fill="#983058" stroke="#782040" stroke-width="2"/>
+  <text x="827" y="131" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">ClienteEntity</text>
+  <text x="827" y="147" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ffb0d0" text-anchor="middle">@Entity / @Table</text>
+  <text x="827" y="162" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" fill="#ffa0c8" text-anchor="middle">nome, cpf, email, renda</text>
+
+  <!-- CARTAO ENTITY -->
+  <rect x="768" y="196" width="118" height="62" rx="8" fill="#983058" stroke="#782040" stroke-width="2"/>
+  <text x="827" y="216" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">CartaoEntity</text>
+  <text x="827" y="232" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ffb0d0" text-anchor="middle">@Entity / @Table</text>
+  <text x="827" y="247" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" fill="#ffa0c8" text-anchor="middle">numero, cvv, limite</text>
+
+  <!-- ENDERECO ENTITY -->
+  <rect x="768" y="281" width="118" height="62" rx="8" fill="#983058" stroke="#782040" stroke-width="2"/>
+  <text x="827" y="301" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">EnderecoEntity</text>
+  <text x="827" y="317" font-family="'Segoe UI',Arial,sans-serif" font-size="8" fill="#ffb0d0" text-anchor="middle">@Entity / @Table</text>
+  <text x="827" y="332" font-family="'Segoe UI',Arial,sans-serif" font-size="7.5" fill="#ffa0c8" text-anchor="middle">rua, cidade, cep</text>
+
+  <!-- ====== LEGEND ====== -->
+  <rect x="25" y="398" width="362" height="115" rx="8" fill="#18182c" stroke="#282848" stroke-width="1.5"/>
+  <text x="206" y="420" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="bold" fill="#d0d4e0" text-anchor="middle">Legenda</text>
+
+  <rect x="44" y="430" width="15" height="13" rx="3" fill="#2563a8"/>
+  <text x="67" y="441" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#b0b8c8">Controller — recebe e roteia requisições HTTP</text>
+
+  <rect x="44" y="450" width="15" height="13" rx="3" fill="#b86c10"/>
+  <text x="67" y="461" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#b0b8c8">Service — regras de negócio e validações</text>
+
+  <rect x="44" y="470" width="15" height="13" rx="3" fill="#167a48"/>
+  <text x="67" y="481" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#b0b8c8">Repository — acesso a dados via Spring Data JPA</text>
+
+  <rect x="44" y="490" width="15" height="13" rx="3" fill="#983058"/>
+  <text x="67" y="501" font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#b0b8c8">Entity — modelo mapeado pelo Hibernate</text>
+</svg>
