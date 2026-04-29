@@ -10,6 +10,11 @@ API REST para gestão de cartões de crédito. Permite que clientes solicitem ca
 
 ![Demo HTTPie](src/img/requestHTTPie.png)
 
+
+## Swagger UI APi
+
+![Swagger UI APi](src/img/swagger.jpeg)
+
 ## Tecnologias
 
 | Tecnologia                  | Versão  |

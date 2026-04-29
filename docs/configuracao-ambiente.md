@@ -2,33 +2,54 @@
 
 ## Requisitos
 
-| Ferramenta | Versão Mínima | Observação                        |
-|-----------|---------------|-----------------------------------|
-| JDK       | 26            | Obrigatório                       |
-| Gradle    | 8.x           | Ou use o wrapper `./gradlew`      |
-| Git       | Qualquer      | Opcional, para controle de versão |
+| Ferramenta | Versão   | Observação                                   |
+|------------|----------|----------------------------------------------|
+| JDK 21     | 21 LTS   | Obrigatório para rodar o Gradle              |
+| JDK 26     | 26       | Opcional — para compilação via toolchain     |
+| Gradle     | 8.x      | Ou use o wrapper `./gradlew`                 |
+| Git        | Qualquer | Opcional, para controle de versão            |
 
-## Instalação do JDK 26
+## Compatibilidade Gradle × Java
+
+> **Importante:** O Gradle 8.14 suporta até Java 24. Tentar rodar o Gradle com Java 26 causa o erro:
+> `BUG! Unsupported class file major version 70`
+
+| JDK | Class file version | Gradle 8.14       |
+|-----|--------------------|-------------------|
+| 21  | 65                 | Suportado         |
+| 24  | 68                 | Suportado         |
+| 26  | 70                 | **Não suportado** |
+
+**Solução:** instale o JDK 21 LTS e aponte o `gradle.properties` para ele. O Gradle roda no JDK 21 enquanto o toolchain do `build.gradle` pode compilar com outra versão se necessário.
+
+## Instalação do JDK 21 (obrigatório para o Gradle)
+
+### Windows (via winget — PowerShell como Administrador)
+
+```powershell
+winget install EclipseAdoptium.Temurin.21.JDK
+```
+
+Após instalar, configure o `gradle.properties` na raiz do projeto:
+
+```properties
+org.gradle.java.home=C:/Program Files/Eclipse Adoptium/jdk-21.0.10.7-hotspot
+```
+
+> Ajuste o número de patch (`21.0.x.x`) conforme a versão instalada em `C:\Program Files\Eclipse Adoptium\`.
 
 ### Linux / macOS (via SDKMAN)
 
 ```bash
-sdk install java 26-tem
-sdk use java 26-tem
-```
-
-### Windows (via Scoop)
-
-```powershell
-scoop bucket add java
-scoop install temurin26-jdk
+sdk install java 21-tem
+sdk use java 21-tem
 ```
 
 ### Verificar instalação
 
 ```bash
 java -version
-# deve exibir: openjdk version "26" ...
+# deve exibir: openjdk version "21" ...
 ```
 
 ## Executando a aplicação
